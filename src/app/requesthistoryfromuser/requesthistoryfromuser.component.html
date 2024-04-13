@@ -11,34 +11,17 @@
             <th>Identity</th>
             <th>Name</th>
             <th>Mobile</th>
-            <!-- <th>Gender</th>
+            <th>Gender</th>
             <th>Blood Group</th>
             <th>Age</th>
             <th>Disease</th>
             <th>Required Units</th>
-            <th>Status</th> -->
+            <th>Status</th>
           </tr>
         </thead>
        
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr><tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr><tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr><tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr>
-          <!-- <tr *ngFor="let history of requests | async">
+          <tr *ngFor="let history of requests | async">
             <td><img *ngIf="history.gender === 'Male' || history.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="80" height="80">
               <img *ngIf="history.gender === 'Female' || history.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="80" height="80">
               </td>
@@ -54,7 +37,7 @@
                 <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
                 <div *ngIf="history.status === 'reject' && loggedUser !== 'admin@gmail.com'" class="rejected">Rejected</div>
               </td>
-          </tr> -->
+          </tr>
         </tbody>
       </table>
     </div>
