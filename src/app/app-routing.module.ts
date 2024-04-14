@@ -31,7 +31,7 @@ const routes: Routes = [
   {path:'bloodStock',component:BloodstockComponent},
   {path:'bloodStockuser',component:UserdashboardComponent},
   {path:'userprofile',component:UserprofileComponent,canActivate:[UserGuard]},
-  {path:'requesthistory',component:RequesthistoryComponent,canActivate:[AdminGuard]},
+  {path:'requesthistory',component:RequesthistoryComponent,canActivate:[UserGuard]},
   {path:'requesthistoryfromuser',component:RequesthistoryfromuserComponent,canActivate:[UserGuard]},
   {path:'requestblood',component:RequestbloodComponent,canActivate:[UserGuard]},
   {path:'userasdonor',component:UserasdonorComponent,canActivate:[UserGuard]},

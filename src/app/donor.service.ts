@@ -30,6 +30,11 @@ export class DonorService {
     return this._http.get<any>(`${NAV_URL}/requestHistory/`+loggedUser);
   }
 
+  public getOpenRequests(bloodgroup:string): Observable<any>
+  {
+    return this._http.get<any>(`${NAV_URL}/openRequests/`+bloodgroup);
+  }
+
   public getUserList(): Observable<any>
   {
     return this._http.get<any>(`${NAV_URL}/userlist`);

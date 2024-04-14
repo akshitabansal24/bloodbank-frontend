@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class RequesthistoryComponent implements OnInit {
 
   loggedUser = '';
+  loggedUserBloodgroup = '';
   tempUser = '';
   msg = '';
   title = '';
@@ -22,8 +23,9 @@ export class RequesthistoryComponent implements OnInit {
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void 
-  {
+  {    
     this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.loggedUserBloodgroup = JSON.stringify(sessionStorage.getItem('loggedUserBloodgroup')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
       this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
@@ -53,14 +55,7 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    if(this.loggedUser === "admin@gmail.com")
-    {
-      this.requests = this.donorService.getRequestHistory();
-    }
-    else
-    {
-      this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-    }
+    this.requests = this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup));
     console.log(this.requests);
   }
 
