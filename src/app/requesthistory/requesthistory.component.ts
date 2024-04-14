@@ -55,14 +55,16 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup)).subscribe(result => {
+    this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup), this.loggedUser).subscribe(result => {
       this.requests = result;
     });
   }
 
-  acceptRequest(curremail : string)
+  acceptRequest(id : number)
   {
-    this.responses = this.donorService.acceptRequestForBlood(curremail);
+    this.donorService.acceptRequestForBlood(this.loggedUser, id).subscribe(result => {
+      console.log(result);
+    });
     $("#acceptbtn").hide();
     $("#rejectbtn").hide();
     $("#acceptedbtn").show();

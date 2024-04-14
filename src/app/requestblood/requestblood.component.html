@@ -28,9 +28,17 @@
   
     <div class="form-group">
       <label for="bloodgroup">Patient Blood Group: <b class="text-danger">*</b></label>
-      <input type="text" class="form-control" placeholder="enter blood group" name="bloodgroup" [(ngModel)]="request.bloodgroup" required 
-      #bloodgroup="ngModel"
-      [class.is-invalid]="bloodgroup.invalid && bloodgroup.touched">
+      <select class="form-control" id="sel1" name="bloodgroup" [(ngModel)]="request.bloodgroup"
+    #bloodgroup="ngModel" [class.is-invalid]="bloodgroup.invalid && bloodgroup.touched">
+        <option selected>O+</option>
+        <option>O-</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+    </select>
      <small class="text-danger" [class.d-none]="bloodgroup.valid || bloodgroup.untouched"><b>required field</b></small>
   </div>
   

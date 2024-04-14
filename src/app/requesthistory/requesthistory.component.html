@@ -33,7 +33,7 @@
             <td>{{history.units}} units</td>
             <td>
                 <div>
-                  <button (click)="acceptRequest(history.email)" id="acceptbtn" value="history.email" value="Accept" style="margin-bottom: 5px;" class="accepted">Acknowledge</button>
+                  <button (click)="acceptRequest(history.id)" id="acceptbtn" value="history.email" value="Accept" style="margin-bottom: 5px;" class="accepted">Acknowledge</button>
                   <button (click)="removeFromList(history)" id="rejectbtn" value="history.email" value="Reject" class="rejected">Ignore</button>
                   <div id="acceptedbtn" class="accepted" style="display: none;">Acknowledged</div>
                   <div id="rejectedbtn" class="rejected" style="display: none;">Ignored</div>

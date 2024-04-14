@@ -27,7 +27,7 @@
             <td style="color: red; font-size: 25px;">{{history.bloodgroup}}</td>
             <td>{{history.units}} units</td>
             <td>
-                <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
+                <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Acknowledged - {{history.donormail}}</div>
                 <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
                 <div *ngIf="history.status === 'reject' && loggedUser !== 'admin@gmail.com'" class="rejected">Rejected</div>
               </td>
