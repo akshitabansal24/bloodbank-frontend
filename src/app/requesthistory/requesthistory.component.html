@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let history of requests | async">
+          <tr *ngFor="let history of requests">
             <td><img *ngIf="history.gender === 'Male' || history.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="80" height="80">
               <img *ngIf="history.gender === 'Female' || history.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="80" height="80">
               </td>
@@ -34,7 +34,7 @@
             <td>
                 <div>
                   <button (click)="acceptRequest(history.email)" id="acceptbtn" value="history.email" value="Accept" style="margin-bottom: 5px;" class="accepted">Acknowledge</button>
-                  <button id="rejectbtn" value="history.email" value="Reject" class="rejected">Ignore</button>
+                  <button (click)="removeFromList(history)" id="rejectbtn" value="history.email" value="Reject" class="rejected">Ignore</button>
                   <div id="acceptedbtn" class="accepted" style="display: none;">Acknowledged</div>
                   <div id="rejectedbtn" class="rejected" style="display: none;">Ignored</div>
                 </div>

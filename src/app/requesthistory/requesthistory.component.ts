@@ -17,7 +17,7 @@ export class RequesthistoryComponent implements OnInit {
   tempUser = '';
   msg = '';
   title = '';
-  requests : Observable<any> | undefined;
+  requests : any[] = [];
   responses : Observable<any> | undefined;
 
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
@@ -55,8 +55,9 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    this.requests = this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup));
-    console.log(this.requests);
+    this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup)).subscribe(result => {
+      this.requests = result;
+    });
   }
 
   acceptRequest(curremail : string)
@@ -82,6 +83,10 @@ export class RequesthistoryComponent implements OnInit {
   {
     sessionStorage.clear();
     this._router.navigate(['/login']);
+  }
+
+  removeFromList(history: any){
+    this.requests.splice(this.requests.indexOf(history), 1);
   }
   
 }
