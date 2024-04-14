@@ -36,6 +36,7 @@ export class RequestbloodComponent implements OnInit {
   
   requestBlood()
   {
+    this.request.requestermail = this.loggedUser;
     this.donorService.requestForBlood(this.request).subscribe(
       data => {
         console.log("Request sent Successfully");

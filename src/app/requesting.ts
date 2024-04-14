@@ -1,6 +1,7 @@
 export class Requesting
 {
     id:number = 0;
+    requestermail = '';
     name:string = '';
     email:string = '';
     bloodgroup:string = '';
@@ -10,6 +11,7 @@ export class Requesting
     gender:string = '';
     age:number = 0;
     status:string = 'false';
+    donormail: string = '';
 
     constructor() {}
 }

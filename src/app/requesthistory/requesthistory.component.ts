@@ -13,17 +13,19 @@ import { Observable } from 'rxjs';
 export class RequesthistoryComponent implements OnInit {
 
   loggedUser = '';
+  loggedUserBloodgroup = '';
   tempUser = '';
   msg = '';
   title = '';
-  requests : Observable<any> | undefined;
+  requests : any[] = [];
   responses : Observable<any> | undefined;
 
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void 
-  {
+  {    
     this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.loggedUserBloodgroup = JSON.stringify(sessionStorage.getItem('loggedUserBloodgroup')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
       this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
@@ -53,20 +55,16 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    if(this.loggedUser === "admin@gmail.com")
-    {
-      this.requests = this.donorService.getRequestHistory();
-    }
-    else
-    {
-      this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-    }
-    console.log(this.requests);
+    this.donorService.getOpenRequests(JSON.parse(this.loggedUserBloodgroup), this.loggedUser).subscribe(result => {
+      this.requests = result;
+    });
   }
 
-  acceptRequest(curremail : string)
+  acceptRequest(id : number)
   {
-    this.responses = this.donorService.acceptRequestForBlood(curremail);
+    this.donorService.acceptRequestForBlood(this.loggedUser, id).subscribe(result => {
+      console.log(result);
+    });
     $("#acceptbtn").hide();
     $("#rejectbtn").hide();
     $("#acceptedbtn").show();
@@ -87,6 +85,10 @@ export class RequesthistoryComponent implements OnInit {
   {
     sessionStorage.clear();
     this._router.navigate(['/login']);
+  }
+
+  removeFromList(history: any){
+    this.requests.splice(this.requests.indexOf(history), 1);
   }
   
 }

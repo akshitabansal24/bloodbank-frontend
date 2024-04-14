@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,6 +29,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           console.log("Response Received");
           sessionStorage.setItem('loggedUser', this.user.email);
+          sessionStorage.setItem('loggedUserBloodgroup', data.bloodgroup);
           sessionStorage.setItem('USER', "user");
           sessionStorage.setItem('ROLE', "user");
           // sessionStorage.setItem('USER', "admin");

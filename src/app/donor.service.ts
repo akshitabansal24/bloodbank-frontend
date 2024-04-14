@@ -30,6 +30,11 @@ export class DonorService {
     return this._http.get<any>(`${NAV_URL}/requestHistory/`+loggedUser);
   }
 
+  public getOpenRequests(bloodgroup:string, loggedUser: string): Observable<any>
+  {
+    return this._http.get<any>(`${NAV_URL}/openRequests/`+bloodgroup+'/'+loggedUser);
+  }
+
   public getUserList(): Observable<any>
   {
     return this._http.get<any>(`${NAV_URL}/userlist`);
@@ -67,9 +72,11 @@ export class DonorService {
     return this._http.put<any>(`${NAV_URL}/updateuser`,user)
   }
   
-  public acceptRequestForBlood(loggedUser : string) : Observable<any>
+  public acceptRequestForBlood(donormail: string, id : number) : Observable<any>
   {
-    return this._http.get(`${NAV_URL}/acceptstatus/`+loggedUser);
+    console.log(donormail);
+    console.log(id);
+    return this._http.get(`${NAV_URL}/acceptstatus/`+donormail+'/'+id);
   }
 
   public rejectRequestForBlood(loggedUser : string) : Observable<any>
